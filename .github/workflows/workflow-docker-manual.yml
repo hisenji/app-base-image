@@ -29,21 +29,6 @@ jobs:
           password: ${{ secrets.DOCKERHUB_PASSWORD }} # NOTE: This MUST be the password NOT the token
           repository: 'voidtrip/app-base-image'
           short-description: ${{ github.event.repository.description }}
-      - name: DEBUG Show Runners environment
-        uses: nick-fields/retry@v2
-        with:
-          timeout_minutes: 5
-          max_attempts: 3
-          retry_wait_seconds: 120
-          command: |
-            export
-      - name: Generate temporary tag name
-        shell: bash
-        run: |
-          test_tag=$(date +%Y%m%d%H%M%S)
-          echo "[debug] Generated test tag name is '${test_tag}'"
-          echo "test_tag=$test_tag" >> $GITHUB_OUTPUT
-        id: generate_temporary_tag_name
       # note this will re-use the internal cached amd64 image from the previous build
       - name: Build multi-arch Docker image, tag and push to registries
         uses: docker/build-push-action@v5
