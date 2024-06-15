@@ -3,6 +3,9 @@ FROM eclipse-temurin:21-jre-alpine
 # 安装 OpenSSH
 RUN apk add --no-cache openssh
 
+# 将 restart.sh 脚本添加到 Docker 镜像的 /data 目录中
+ADD restart.sh /data/restart.sh
+
 # 将 init.sh 脚本添加到 Docker 镜像的 /root 目录中
 ADD init.sh /root/init.sh
 
