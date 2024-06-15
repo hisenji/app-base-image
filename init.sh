@@ -44,6 +44,10 @@ else
     #sed -i 's/UsePAM no/UsePAM yes/g' /etc/ssh/sshd_config
     #sed -i 's/#UsePAM yes/UsePAM yes/g' /etc/ssh/sshd_config
 
+    # 生成 jar 重启脚本
+    sed -i 's|JAR_ARGS_PLACEHOLDER|$JAR_ARGS|g' /data/restart.sh
+    sed -i 's|JAR_FILE_PLACEHOLDER|$JAR_FILE|g' /data/restart.sh
+
     # 创建标记文件
     touch /root/.init
 
