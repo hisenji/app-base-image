@@ -45,7 +45,7 @@ else
     #sed -i 's/#UsePAM yes/UsePAM yes/g' /etc/ssh/sshd_config
 
     # 生成 jar 重启脚本
-    cp -f /root/restart.sh /data/restart.sh
+    mv -f /root/restart.sh /data/restart.sh
     chown app:app /data/restart.sh
     chmod +x /data/restart.sh
     sed -i 's|JAR_ARGS_PLACEHOLDER|'"$JAR_ARGS"'|g' /data/restart.sh
